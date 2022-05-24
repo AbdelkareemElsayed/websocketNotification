@@ -22,4 +22,9 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
+Route::view('Notification','notification');
 
+Route::get('PushNotification', function () {
+    event(new \App\Events\OrderShipmentEvent(1, "Hey! your order shipped"));
+    return "event fire";
+});
